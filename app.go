@@ -36,6 +36,7 @@ func (a *App) initializeRoutes() {
 
 func (a *App) Run() {
 	port := getPort()
+
 	log.Println("App running on port: " + port)
 	log.Fatal(http.ListenAndServe(":"+port, a.Router))
 }

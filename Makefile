@@ -37,3 +37,6 @@ heroku:
 	@echo "Publishing on Heroku..."
 	heroku login
 	git push heroku master
+
+arm-build:
+	env GOOS=linux GOARCH=arm GOARM=5 go build -o swimming-calculator-api-arm

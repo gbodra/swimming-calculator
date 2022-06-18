@@ -1,6 +1,8 @@
 package model
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type SplitEntry struct {
 	Distance     uint
@@ -83,8 +85,16 @@ func calculateRaceTotalSeconds(splits []SplitEntry) float32 {
 }
 
 func calculateRacePace(totalSecs float32, distance uint) Pace {
-	numberOf100m := distance / 100
-	totalSecsPer100m := totalSecs / float32(numberOf100m)
+	var totalSecsPer100m float32
+
+	if distance <= 50 {
+		numberOfSplits := 100 / distance
+		totalSecsPer100m = float32(numberOfSplits) * totalSecs
+	} else {
+		numberOf100m := distance / 100
+		totalSecsPer100m = totalSecs / float32(numberOf100m)
+	}
+
 	pace := Pace{
 		Minute: uint(totalSecsPer100m) / 60,
 		Second: uint(totalSecsPer100m) % 60,

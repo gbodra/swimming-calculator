@@ -44,6 +44,7 @@ func RacePost(w http.ResponseWriter, r *http.Request) {
 	log.Println("raceEntry:", raceEntry)
 
 	w.Header().Set("Content-Type", "application/json")
+
 	raceEntryJson, _ := json.Marshal(raceEntry)
 	w.Write([]byte(raceEntryJson))
 }

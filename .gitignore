@@ -2,3 +2,5 @@ swimming-calculator-api
 *.code-workspace
 
 .env
+
+.vscode
